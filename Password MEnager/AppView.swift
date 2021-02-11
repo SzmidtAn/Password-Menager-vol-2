@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AppView: View {
+    let name: String
     var body: some View {
 
 
@@ -17,7 +18,7 @@ struct AppView: View {
         
         TabView {
             
-         ContentView()
+            ContentView(name: self.name)
             
             .tabItem {
                   Image(systemName: "list.dash")
@@ -56,7 +57,7 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
+        AppView(name: "NAME")
     }
 }
 

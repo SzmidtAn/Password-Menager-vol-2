@@ -29,7 +29,7 @@ struct LoginView: View {
     var body: some View {
         
         if unlock{
-            AppView()
+            AppView(name: self.username)
         }else{
 
         NavigationView{
@@ -49,7 +49,7 @@ struct LoginView: View {
 
                       
                     NavigationLink(
-                        destination: LoginPinView( pinKod: $password, isUser: $isUser, isUnlocked: $unlock)
+                        destination: LoginPinView( pinKod: $password, username: self.$username, isUser: $isUser, isUnlocked: $unlock)
                     ){
                         
                     
@@ -60,7 +60,7 @@ struct LoginView: View {
                 }
                     
                     if isUser{
-           ifUserLogoView(isUnlocked: $unlock)
+                        ifUserLogoView(isUnlocked: $unlock)
                     }
                     else{
                         ifNotUserLogoView()
@@ -171,8 +171,11 @@ struct logoView: View {
 struct ifUserLogoView: View {
     @Binding var isUnlocked: Bool
 
+
     var body: some View{
         VStack{
+        
+            
         Image(
         systemName: "key")
             .foregroundColor(.white)
@@ -232,6 +235,8 @@ struct ifNotUserLogoView: View{
     var body: some View{
         
         VStack{
+          
+            
         Image(
         systemName: "person")
             .resizable()

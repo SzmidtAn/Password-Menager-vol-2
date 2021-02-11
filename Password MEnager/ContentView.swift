@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    var name: String
     var navBackgroundImage = UIImage(systemName: "tramsparent")
     @Environment(\.colorScheme) var colorScheme
 
 
     
     
-    init() {
-
+    init(name: String) {
+        self.name = name
         UINavigationBar.appearance().largeTitleTextAttributes = [  .foregroundColor: UIColor.white]
         
         UITableView.appearance().backgroundColor = UIColor(Color.white.opacity(0))
@@ -64,7 +65,7 @@ struct ContentView_Previews: PreviewProvider {
     
 
     static var previews: some View {
-        ContentView()
+        ContentView(name: "dwed")
 
     }
 }

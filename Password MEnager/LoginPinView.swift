@@ -14,6 +14,8 @@ struct LoginPinView: View {
     @State var circle3 = "circle"
     @State var circle4 = "circle"
     @Binding var pinKod: String
+    @Binding var username: String
+
     @State private var showingAlert = false
     @Binding var isUser: Bool
     
@@ -53,8 +55,21 @@ struct LoginPinView: View {
                 
                 VStack{
                     
-             
-            
+                    if !isUser{
+                    HStack{
+                    Label("What's your name?", image: "person")
+                        
+                        TextField("Username", text: $username)
+                        
+                        Spacer()
+                    }
+                    }else{
+                        Text("Hello, \(username)")
+                        
+                    }
+                   
+                    
+                    
                 Text(pinKodText)
                     .padding()
                 
@@ -127,7 +142,7 @@ struct LoginPinView: View {
 
             .ignoresSafeArea()
             .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Your pin kod is: "), message: Text(pinKod), dismissButton: .default(Text("Got it!")){
+                Alert(title: Text("Hello \(username)"), message: Text("Your pin kod is: \(pinKod)"), dismissButton: .default(Text("Got it!")){
                     self.presentationMode.wrappedValue.dismiss()
 
                 })
